@@ -1,0 +1,58 @@
+#homeButton{
+    height: 25px;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: 10px;
+    opacity: 0.6;
+    transition: 0.6s;
+    transition: all 0.06s linear;
+}
+
+#homeButton:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+h1{
+    margin-top: -25px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    width: 300px;
+    margin-bottom: 2px;
+}
+
+.inputField {
+    margin-bottom: 8px;
+    height: 20px;
+    font-weight: 550;
+    border-radius: 3px;
+    border-style: solid;
+    padding-left: 3px;
+    transition: all 0.1s linear;
+}
+
+.inputField:focus{
+    border-radius: 0px;
+    border-style: solid;
+    border-color: black;
+    outline: none;
+    background: rgb(240, 240, 240);
+}
+
+#form{
+    margin-bottom: 10px;
+}
+
+.errMsg{
+    font-weight: 500;
+    color: red;
+    margin-bottom: 10px;
+}
+
+
+
+

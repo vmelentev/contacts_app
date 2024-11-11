@@ -1,0 +1,94 @@
+ul {
+    width: 300px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+li{
+    margin-top: 3px;
+    margin-bottom: 8px;
+    background-color: #03CEA4;
+    display: flex;
+    border-radius: 5px;
+    height: 80px;
+}
+
+.person {
+    height: 65px;
+    margin-left: 10px;
+    align-self: center;
+    opacity: 0.7;
+}
+
+.details{
+    margin-top: 8px;
+    margin-left: 10px;
+    opacity: 0.7;
+}
+
+.Name{
+    font-weight: 750;
+    font-size: 18px;
+    margin-bottom: 1px;
+    letter-spacing: -0.5px;
+}
+
+.Email{
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.remove{
+    height: 11px;
+    opacity: 0.7;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+.remove:hover{
+    cursor: pointer;
+    transition: all 0.06s linear;
+}
+
+.contact{
+    height: 25px;
+    width: 195px;
+    margin-top: 3px;
+    font-weight: 600;
+    border-radius: 3px;
+    opacity: 1;
+    border-width: thin;
+}
+
+.contact:hover{
+    cursor: pointer;
+}
+
+#button{
+    width:300px;
+    height: 30px;
+    background-color: #87BAAB;
+    border-radius: 5px;
+    border-width: thin;
+    margin-bottom: 15px;
+    transition: all 0.06s linear;
+    font-size: large;
+    font-weight: 600;
+
+}
+
+#button:hover{
+    background-color: #668c81;
+    cursor: pointer;
+}
+
+h1 {
+    margin-left: 50px;
+    margin-top: 8px;
+}
+
+#placeholderImage{
+    width:100px;
+    margin-left: 100px;
+    opacity: 0.3;
+}
