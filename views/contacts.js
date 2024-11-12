@@ -15,7 +15,7 @@
         names.push(Name);
         emails.push(email);
 
-        await saveData();
+        await saveData(Name, email);
 
         localStorage.clear();
     }
@@ -62,7 +62,7 @@
     }
 })();
 
-async function saveData() {
+async function saveData(Name, email) {
     try{
         const response = await fetch('http://localhost:3000/api/save-data', {
             method: 'POST',
@@ -74,7 +74,7 @@ async function saveData() {
         const result = await response.json();
         console.log(result);
     } catch(error) {
-        console.log("An error occured while trying to update the database");
+        console.log("An error occured while trying to update the database", error);
     }
 }
 
@@ -94,6 +94,31 @@ async function retrieveData() {
     }
 }
 
+async function remove(email){
+    try {
+        const response = await fetch('http://localhost:3000/api/remove-contact', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email }) // Send the email in the request body
+        });
+
+        const result = await response.json();
+        
+        if (response.ok) {
+            console.log("User deleted successfully:", result);
+            return result;
+        } else {
+            console.log("Error deleting user:", result.message || 'Unknown error');
+            return null;
+        }
+    } catch (error) {
+        console.log("An error occurred while trying to delete the contact:", error);
+        return null;
+    }
+}
+
 function populateArrays(contacts, names, emails) {
     const contactsArray = Object.values(contacts);
     contactsArray.forEach(contact => {
@@ -102,3 +127,29 @@ function populateArrays(contacts, names, emails) {
     });
     console.log(names, emails);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const list = document.getElementById('list');
+
+    list.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('remove')) {
+            const listItem = event.target.closest('li');
+            if (listItem) {
+                const email = listItem.querySelector('.Email').textContent;
+
+                remove(email);
+                listItem.remove();
+
+                if (list.children.length === 0) {
+                    const imgElement = document.createElement('img');
+
+                    imgElement.id = 'placeholderImage';
+                    imgElement.src = 'src/person.png';
+
+                    const title = document.querySelector('.list h1');
+                    title.insertAdjacentElement('afterend', imgElement);
+                }
+            }
+        }
+    });
+});

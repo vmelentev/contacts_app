@@ -44,6 +44,25 @@ app.post('/api/save-data', async (req, res) => {
   }
 })
 
+app.delete('/api/remove-contact', async (req, res) => {
+  const { email } = req.body; // Get the email from the request body
+
+  try {
+    // Find and delete the contact by its email
+    const deletedUser = await User.findOneAndDelete({ email });
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // If the deletion was successful, send a success response
+    res.json({ message: "User deleted successfully", deletedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while trying to delete the user");
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
