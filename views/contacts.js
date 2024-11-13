@@ -1,5 +1,4 @@
 (async function init() {
-    console.log("this ran");
     var names = [];
     var emails = [];
 
@@ -60,6 +59,8 @@
             list.appendChild(li);
         }
     }
+
+    toggleScrollbar();
 })();
 
 async function saveData(Name, email) {
@@ -140,6 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 remove(email);
                 listItem.remove();
 
+                toggleScrollbar();
+
                 if (list.children.length === 0) {
                     const imgElement = document.createElement('img');
 
@@ -151,5 +154,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+
+        if (event.target && event.target.classList.contains('contact')) {
+            const listItem = event.target.closest('li');  
+            const emailElement = listItem.querySelector('.Email');  
+            const email = emailElement.textContent;           
+            localStorage.setItem("email", email);
+            window.location.href = "message.html"; 
+        }
     });
 });
+
+function toggleScrollbar() {
+    const list = document.getElementById('list');
+
+    if (list.children.length > 3) {
+        list.style.height = '270px';
+        list.style.overflowY = 'scroll';
+    } else if (list.children.length === 3) {
+        list.style.height = '270px'
+        list.style.overflowY = 'hidden';
+    } else if (list.children.length === 2) {
+        list.style.height = '180px'
+        list.style.overflowY = 'hidden';
+    } if (list.children.length === 1) {
+        list.style.height = '90px'
+        list.style.overflowY = 'hidden';
+    }
+}

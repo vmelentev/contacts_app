@@ -1,0 +1,22 @@
+.inputs{
+    width: 410px;
+}
+
+#email{
+    border: 2px solid black;
+}
+
+#message{
+    resize: none;
+    height: 250px;
+    border: 2px solid gray;
+}
+
+#message:focus {
+    border-color: black;
+}
+
+#button {
+    width: 410px;
+    margin-bottom: 8px;
+}
